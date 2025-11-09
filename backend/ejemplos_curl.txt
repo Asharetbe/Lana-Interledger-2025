@@ -1,0 +1,49 @@
+ 1. generar qr
+ 
+ curl -X POST http://localhost:3007/generate-payment-qr \
+  -H "Content-Type: application/json" \
+  -d '{
+    "amount": 10.50,
+    "currency": "MXN",
+    "description": "Coffee purchase"
+  }'
+
+
+
+{"success":true,"incomingPaymentUrl":"https://ilp.interledger-test.dev/f537937b-7016-481b-b655-9f0d1014822c/incoming-payments/1f814a7c-070f-4b3e-83d5-b89b95dd24cd","qrCodeDataUrl":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOQAAADkCAYAAACIV4iNAAAAAklEQVR4AewaftIAAAxLSURBVO3BQY4cybIgQdVA3f/KOlx92MqBQGaR3m9MxP5grXWFh7XWNR7WWtd4WGtd42GtdY2HtdY1HtZa13hYa13jYa11jYe11jUe1lrXeFhrXeNhrXWNh7XWNR7WWtd4WGtd44cPqfxNFZPKN1VMKr+pYlJ5o2JSOamYVN6omFTeqJhUTipOVKaKSeVvqvjEw1rrGg9rrWs8rLWu8cOXVXyTyicqJpWpYlKZKiaVk4pJ5Y2KSeVEZaqYVE4qJpUTlTcqPqHyTRXfpPJND2utazysta7xsNa6xg+/TOWNik9UTCpTxUnFScWk8gmVqWKqmFTeqJhUpoo3KiaVqWJSOamYVKaKSeWbVN6o+E0Pa61rPKy1rvGw1rrGD/9xFZPKVDGpTBWTylQxqUwVk8pUMamcqEwVU8WkcqJyovJNKicVk8onKv6XPKy1rvGw1rrGw1rrGj/8x6mcqEwVJxWTylQxqZyoTBWTyonKGypvVJyoTConFScqn6j4X/aw1rrGw1rrGg9rrWv88MsqflPFicqk8kbFpPIJlaliUjmpeEPlRGWqmComlROVqeKkYlKZVKaKb6q4ycNa6xoPa61rPKy1rvHDl6n8TSpTxUnFpDJVTCpTxaQyVUwqU8WkMlVMKicqU8VJxaRyojJVTCpTxaQyVUwqU8WkcqIyVZyo3OxhrXWNh7XWNR7WWtewP1j/R+Wk4hMqn6h4Q+WNikllqjhRmSomlaniROWNiv+yh7XWNR7WWtd4WGtd44cPqUwVJyq/qWJSmSomlZOKSeWk4qRiUnlD5V9SmSreqJhUTiomlROVqeJEZaqYVN6o+MTDWusaD2utazysta5hf/ABlW+qOFGZKiaVqWJSmSomlTcqJpWTikllqjhROamYVKaKSeWNijdUpoo3VKaKSWWqmFSmiknlpGJSmSq+6WGtdY2HtdY1HtZa17A/+IDKVPFNKicVk8pJxRsqU8WJylTxhspUMamcVHxCZaqYVE4qJpVPVEwqU8UbKr+p4hMPa61rPKy1rvGw1rrGD5erOFE5qfhExYnKVPGJikllqnhD5aTiRGWqmFQ+UTGpvKFyUvFNFb/pYa11jYe11jUe1lrX+OFDFW+oTBWTyknFVPGGyknFpDJVTBWTylQxqZxUTBWTyicqJpW/qWJSOVGZKk5UTiomlZOKSeWk4hMPa61rPKy1rvGw1rrGDx9S+U0Vk8pUMalMFVPFpDKpvKHyRsWJym9SOamYVE4qTireqJhUJpWpYqqYVKaKk4o3Kr7pYa11jYe11jUe1lrX+OEvq5hUTlSmiknlRGWqmComlW9S+UTFpDJVnKi8oTJVfJPK31QxqUwVk8pUcaIyVXziYa11jYe11jUe1lrX+OGXVbxR8TepvKEyVUwqU8WkMlVMKicVn6iYVD6hclIxVUwqk8pUMam8ofJGxaQyVUwq3/Sw1rrGw1rrGg9rrWv88KGKSeWNihOVqeKbKiaVk4o3VKaKT6icVEwV36QyVUwqk8pUMVW8UTGpvFExqUwVJypTxTc9rLWu8bDWusbDWusa9gcfUDmpeENlqvgmlaniRGWqmFQ+UTGpTBU3UzmpmFSmiknlpGJS+ZcqvulhrXWNh7XWNR7WWtf44R9TOVGZKiaVqeKkYlL5RMWJylQxqUwVJyonFZ9QOamYKiaVSWWq+E0Vb6i8UTGpTBWfeFhrXeNhrXWNh7XWNX74sopPVHxC5aTiN6lMFScVk8pUcVLxhspJxaQyqUwVU8WJylTxhso3VUwqU8Wk8pse1lrXeFhrXeNhrXWNH36ZyknFpPJGxRsqv6niROWbVH5TxaRyojJVTBWTyknFpDJVTCpvVEwVJxW/6WGtdY2HtdY1HtZa1/jhQxWTylTxRsWJyonKScUbKm+oTBVvVHxTxaTyhsonVKaKqeJE5UTlm1ROKn7Tw1rrGg9rrWs8rLWuYX/wi1T+f1JxojJVTCq/qWJSOak4UXmjYlKZKt5Q+aaKSWWqmFSmik88rLWu8bDWusbDWusaP3yZyicq3lCZKiaVb6qYVE5UTlTeqHhDZVKZKk5UpopPqEwVJypTxUnFGyqTyr/0sNa6xsNa6xoPa61r/PBlFZPKVDGpnKhMFW9UnKicVEwqb1S8ofKGylTxhso3VUwqU8Wk8obKGypTxRsVk8pU8U0Pa61rPKy1rvGw1rrGDx9S+U0Vb6hMFZPKGypvqEwVk8o3VXyi4kTlExWTyt9U8V/ysNa6xsNa6xoPa61r2B/8RSq/qWJSOamYVKaKE5WTihOVqWJS+ZcqJpWTihOVqeJE5W+qeENlqvjEw1rrGg9rrWs8rLWu8cNfVjGpTBUnKlPFScWkMqn8L6mYVE4qJpVJZao4UfmbKj6hcqLyNz2sta7xsNa6xsNa6xo/fEhlqphUPqHyhspU8UbFicpJxYnKGxWTyonKVPFGxYnKGxUnKicVk8qk8kbFVDGpvFHxTQ9rrWs8rLWu8bDWuob9wQdUTiomlanim1ROKiaVqeITKlPFv6TyTRUnKm9UvKHyRsWkMlW8oTJVfNPDWusaD2utazysta7xw4cqJpVJZaqYVD5R8YbKGyq/SWWqOFGZKt6omFSmijdUTireUJkqPqFyojJVTCpTxaQyVXziYa11jYe11jUe1lrX+OFDKm+oTBWTylQxqZxUTCpTxb+k8ptUpopJZao4UZkqTipOVN5Q+UTFicpJxd/0sNa6xsNa6xoPa61r/PChihOVqWJSmSomlW9SeaPiRGWq+ITKScU3qbyhMlWcqEwVk8pUcaIyVUwqJyqfUJkqvulhrXWNh7XWNR7WWtf44ctUTlTeqJhUJpWpYqr4JpU3VKaKSWWqeENlqvhExaRyojJVnKi8oTJV/CaVf+lhrXWNh7XWNR7WWtf44ZdVnKhMKicVv0llqjipmFROVE5UpopPqJxUvFExqZxUTConKicqU8WJylQxqZxUTCqTylTxiYe11jUe1lrXeFhrXcP+4AMqJxWTylTxCZWpYlL5lyomlaniEypvVHyTyknFpDJVTCrfVPGGyicqPvGw1rrGw1rrGg9rrWv88GUVk8onVN5QmSomlW+qmFR+k8pUMamcqJxUTCpTxRsqU8WkclIxqbyhMlWcVJyoTBXf9LDWusbDWusaD2uta9gffJHKVHGiMlWcqEwVb6hMFZPKJyomlaliUpkqTlROKt5QeaPiRGWqmFROKiaVv6niX3pYa13jYa11jYe11jV++McqJpWbVUwqk8pU8QmVqeJvqvimikllUvlExaQyVZyoTBWTyknFJx7WWtd4WGtd42GtdQ37gy9SeaPiDZWTin9J5aRiUjmpOFGZKk5UpooTlZOKSeWk4g2Vk4pJZaqYVKaKE5U3Kj7xsNa6xsNa6xoPa61r2B98QOWNijdUPlHxhspJxaTyiYoTld9UcaIyVUwqU8WJyn9ZxW96WGtd42GtdY2HtdY17A/+w1Q+UXGiMlVMKicVb6icVLyhMlVMKp+oOFE5qZhUpopJ5aTiDZWTir/pYa11jYe11jUe1lrX+OFDKn9TxUnFpDJVTCpTxScqJpWpYlL5hMpUcaJyUvEJlaliUplU3qiYVE5UpoqTiknljYpPPKy1rvGw1rrGw1rrGj98WcU3qdxE5UTlExWTyknFGxWTyonKScVUcVLxCZU3Kt5QmSomlanimx7WWtd4WGtd42GtdY0ffpnKGxWfUJkqTipOKiaVNyomlaniDZV/qeINlTcqJpWpYlKZVD5R8YbKVPGJh7XWNR7WWtd4WGtd44f/cSonFScqJxWTyqTyiYpPqLyhcqJyUvE3VUwqU8WkMlVMKm9UfNPDWusaD2utazysta7xw39cxaRyUvFGxaRyUjGpTBXfpPKJikllqphUvqliUpkq3qiYVE5Upoo3VKaKTzysta7xsNa6xsNa6xo//LKKv6niEypvqEwVJyonFZPKGxVvqEwVJxUnKlPFpDKpnKhMFZPKVHFScaLyLz2sta7xsNa6xsNa6xo/fJnK36RyUnGiMlVMKicVk8pU8YbKScWkcqIyVUwVk8pU8U0VJypTxRsqU8Wk8kbFico3Pay1rvGw1rrGw1rrGvYHa60rPKy1rvGw1rrGw1rrGg9rrWs8rLWu8bDWusbDWusaD2utazysta7xsNa6xsNa6xoPa61rPKy1rvGw1rrGw1rrGv8PKg2OYxqRTiEAAAAASUVORK5CYII=","amount":10.5,"assetCode":"MXN","description":"Coffee purchase","expiresAt":"2025-11-09T11:41:08.973Z","message":"QR code ready for tourist to scan"}%
+
+
+2. ver estado de pago 
+
+ curl "http://localhost:3007/payment-status/https%3A%2F%2Filp.interledger-test.dev%2Ff537937b-7016-481b-b655-9f0d1014822c%2Fincoming-payments%2F1f814a7c-070f-4b3e-83d5-b89b95dd24cd"
+
+{"success":true,"completed":false,"receivedAmount":{"value":"0","assetCode":"MXN","assetScale":2},"incomingAmount":{"value":"1050","assetCode":"MXN","assetScale":2},"expiresAt":"2025-11-09T11:41:08.973Z","metadata":{"description":"Coffee purchase"}}%    
+
+3. simular turista paga y le da autorizacion 
+
+ curl -X POST http://localhost:3007/simulate-tourist-payment \
+  -H "Content-Type: application/json" \
+  -d '{
+    "incomingPaymentUrl": "https://ilp.interledger-test.dev/f537937b-7016-481b-b655-9f0d1014822c/incoming-payments/1f814a7c-070f-4b3e-83d5-b89b95dd24cd"
+  }'
+
+{"success":true,"status":"PENDING_AUTHORIZATION","requiresInteraction":true,"authorizationUrl":"https://auth.interledger-test.dev/interact/35ce1b58-fc24-448b-88c0-40eadb75e161/A2B72BEC118DE00A?clientName=hola&clientUri=https%3A%2F%2Filp.interledger-test.dev%2Fvania","continueToken":"2707E7E5766C141390DD","continueUri":"https://auth.interledger-test.dev/continue/6170b673-9f7d-4274-ac0a-16d483d1d18e","quoteId":"https://ilp.interledger-test.dev/f537937b-7016-481b-b655-9f0d1014822c/quotes/f4cf1490-7865-4f12-8412-d85e8beaaa12","debitAmount":{"value":10.5,"assetCode":"MXN","formatted":"10.5 MXN"},"receiveAmount":{"value":10.5,"ass
+
+4. Completar pago despues de autorizacion del turista
+
+curl -X POST http://localhost:3007/complete-payment \
+  -H "Content-Type: application/json" \
+  -d '{
+    "quoteId": "https://ilp.interledger-test.dev/f537937b-7016-481b-b655-9f0d1014822c/quotes/f4cf1490-7865-4f12-8412-d85e8beaaa12",
+    "continueUri": "https://auth.interledger-test.dev/continue/6170b673-9f7d-4274-ac0a-16d483d1d18e",
+    "continueToken": "2707E7E5766C141390DD"
+  }'
+
+{"success":false,"status":"FAILED","error":"Grant was not finalized after authorization"}% 
+
+5. SALUD ✅
+
+curl http://localhost:3007/health
+
+{"status":"ok","merchant":"https://ilp.interledger-test.dev/vania","timestamp":"2025-11-09T10:53:35.216Z"}
+
