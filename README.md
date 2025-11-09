@@ -142,21 +142,6 @@ Imagina ser un turista en un mercado local de México, encontrando productos art
 
 ---
 
-## Equipo
-
-### Creadores de LANA
-
-- **[Tu Nombre](https://github.com/tu-usuario)** - *Full Stack Developer & Product Vision*
-  - Arquitectura del sistema, integración Interledger
-- **[Miembro 2](https://github.com/miembro2)** - *Frontend & UX Design*
-  - Diseño de interfaz centrado en el usuario
-- **[Miembro 3](https://github.com/miembro3)** - *Backend & Security*
-  - API development y seguridad
-
-*Construido con durante el Interledger Hackathon 2025*
-
----
-
 ## Aprendizajes
 
 Durante este hackathon intensivo, nuestro equipo experimentó un viaje transformador:
