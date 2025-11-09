@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lana — Pitch Hackaton Interledger (v2)</title>
+  <style>
+    :root{
+      --lana-turquesa:#22C6B7; /* Primario */
+      --lana-dorado:#FFD166;   /* Secundario */
+      --lana-coral:#FF7FA3;    /* Acento */
+      --lana-blanco:#FFFFFF;   /* Fondo neutro */
+      --lana-texto:#111111;    /* Texto principal */
+      --lana-gris:rgba(17,17,17,0.12); /* Líneas y bordes sutiles */
+    }
+    html,body{height:100%}
+    *{box-sizing:border-box}
+    body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial,sans-serif; color:var(--lana-texto); background:var(--lana-blanco)}
+    header.sticky{position:sticky; top:0; z-index:50; background:var(--lana-blanco); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 20px; box-shadow:0 6px 24px -18px rgba(17,17,17,.25)}
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand svg{height:44px; width:auto}
+    .brand h1{font-size:18px; margin:0; letter-spacing:.4px}
+    .lang-switch{display:flex; align-items:center; gap:8px}
+    .lang-switch button{border:0; background:transparent; padding:8px 10px; border-radius:10px; cursor:pointer}
+    .lang-switch button.active{background:var(--lana-gris)}
+    nav.pills{display:flex; gap:8px; flex-wrap:wrap}
+    nav.pills a{text-decoration:none; color:var(--lana-texto); font-size:14px; padding:8px 12px; border-radius:999px; background:rgba(34,198,183,.08); border:1px solid rgba(34,198,183,.15)}
+    section.slide{min-height:100svh; padding:64px 20px; display:grid; place-items:center; position:relative; overflow:hidden}
+    .container{width:min(1100px, 94vw); margin-inline:auto; display:grid; grid-template-columns:1.1fr .9fr; gap:min(5vw,48px)}
+    .container.single{grid-template-columns:1fr}
+    h2.kicker{font:600 14px/1.2 system-ui; letter-spacing:.16em; text-transform:uppercase; color:#066; opacity:.7}
+    h3.title{font:800 clamp(32px,4vw,56px)/1.1 system-ui; margin:.2em 0 .15em}
+    p.lead{font:400 clamp(16px,2.2vw,20px)/1.6 system-ui; opacity:.95}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:14px; border:1px solid transparent; font-weight:700; text-decoration:none}
+    .btn.primary{background:var(--lana-turquesa); color:#00302A}
+    .btn.warn{background:var(--lana-dorado); color:#4A3500}
+    .btn.pink{background:var(--lana-coral); color:#4A0E1D}
+    .card{background:#fff; border-radius:18px; padding:18px; box-shadow:0 10px 35px -18px rgba(17,17,17,.35); border:1px solid rgba(17,17,17,.06)}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    .grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
+    .badge{display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(255,209,102,.25); border:1px solid rgba(255,209,102,.5); font-size:12px}
+    .mock{aspect-ratio:10/16; border-radius:22px; border:10px solid #111; position:relative; overflow:hidden; background:linear-gradient(160deg, rgba(34,198,183,.15), rgba(255,127,163,.18)); box-shadow:0 18px 60px -24px rgba(17,17,17,.35)}
+    .mock::after{content:""; position:absolute; inset:auto 20% 8px 20%; height:10px; border-radius:6px; background:rgba(255,255,255,.5)}
+    .mock .status{position:absolute; inset:auto 10px 18px auto; background:#fff; color:#111; border-radius:12px; padding:8px 10px; font-size:12px; box-shadow:0 10px 30px -14px rgba(17,17,17,.4)}
+    .flow{border-left:3px dashed rgba(34,198,183,.6); padding-left:16px}
+    .fade-up{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease}
+    .fade-up.in{opacity:1; transform:none}
+    .coin{position:absolute; width:18px; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle at 30% 30%, #fff 0 12%, var(--lana-dorado) 13% 60%, #E4B84C 61% 100%); box-shadow:0 4px 16px rgba(0,0,0,.15)}
+    .coins{pointer-events:none}
+    .sheep-eye{transform-origin:center; animation:blink 5s infinite}
+    @keyframes blink{0%,2%,60%,100%{transform:scaleY(1)} 1%{transform:scaleY(.05)}}
+    @media (max-width:900px){.container{grid-template-columns:1fr; gap:26px} header.sticky{padding:12px 14px} .brand svg{height:36px}}
+  </style>
+</head>
+<body>
+  <header class="sticky" aria-label="Barra superior">
+    <div class="brand" aria-label="Marca Lana">
+      <svg viewBox="0 0 140 60" aria-hidden="true">
+        <circle cx="110" cy="28" r="12" fill="url(#gold)"/>
+        <defs>
+          <radialGradient id="gold" cx="30%" cy="30%">
+            <stop offset="0%" stop-color="#fff"/>
+            <stop offset="20%" stop-color="#fff"/>
+            <stop offset="21%" stop-color="#FFD166"/>
+            <stop offset="80%" stop-color="#E4B84C"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="46" cy="30" rx="28" ry="20" fill="#fff" stroke="rgba(17,17,17,.2)"/>
+        <circle cx="30" cy="20" r="12" fill="#fff" stroke="rgba(17,17,17,.2)"/>
+        <circle cx="58" cy="20" r="12" fill="#fff" stroke="rgba(17,17,17,.2)"/>
+        <circle cx="46" cy="30" r="14" fill="#111" />
+        <circle class="sheep-eye" cx="42" cy="28" r="2" fill="#fff"/>
+        <circle class="sheep-eye" cx="50" cy="28" r="2" fill="#fff"/>
+      </svg>
+      <h1>Lana · PayLocal</h1>
+    </div>
+    <nav class="pills" aria-label="Navegación rápida">
+      <a href="#hook">Hook</a>
+      <a href="#problema">Problema</a>
+      <a href="#insight">Insight</a>
+      <a href="#solucion">Solución</a>
+      <a href="#modos">App</a>
+      <a href="#impacto">Impacto</a>
+      <a href="#datosmx">Datos MX</a>
+      <a href="#stack">Stack</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#cierre">Cierre</a>
+    </nav>
+    <div class="lang-switch" aria-label="Idioma">
+      <button id="es" class="active" aria-pressed="true">ES</button>
+      <button id="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <div class="coins" aria-hidden="true"></div>
+
+  <section id="hook" class="slide" style="background:linear-gradient(180deg, rgba(34,198,183,.12), rgba(255,127,163,.10));">
+    <div class="container">
+      <div>
+        <h2 class="kicker fade-up">Hackaton Interledger · Pitch</h2>
+        <h3 class="title fade-up">¿Cuántos tacos se pierden por culpa del efectivo?</h3>
+        <p class="lead fade-up">Miles de turistas quieren pagar. Miles de pequeños negocios quieren vender. El efectivo se interpone.</p>
+        <div class="fade-up" style="display:flex; gap:10px; margin-top:12px">
+          <a class="btn primary" href="#solucion">Ver solución</a>
+          <a class="btn pink" href="#demo">Ver demo (mock)</a>
+        </div>
+      </div>
+      <div>
+        <div class="mock"><div class="status">Escanea y paga → Confirmado ✅</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="problema" class="slide">
+    <div class="container">
+      <div>
+        <h2 class="kicker fade-up">El problema</h2>
+        <h3 class="title fade-up">Brecha entre turistas digitales y comercios locales en efectivo</h3>
+        <div class="grid-3">
+          <div class="card fade-up"><span class="badge">Turismo MX</span>
+            <p><strong>US$ 32.96 mil millones</strong> en divisas por turismo internacional (2024 aprox.). ~<strong>45M</strong> de visitantes. México es el <strong>#6</strong> más visitado.</p>
+          </div>
+          <div class="card fade-up"><span class="badge">MiPymes</span>
+            <p>Las MiPymes son el <strong>99.8%</strong> de las empresas, > <strong>50%</strong> del PIB y <strong>68%</strong> del empleo. Muchas operan <strong>sólo con efectivo</strong>.</p>
+          </div>
+          <div class="card fade-up"><span class="badge">Inclusión</span>
+            <p><strong>51%</strong> de adultos sin cuenta bancaria y sólo <strong>11%</strong> de MiPymes usa crédito bancario. El efectivo limita la derrama local.</p>
+          </div>
+        </div>
+        <p class="lead fade-up" style="margin-top:12px">Cada venta que no puede cobrarse digitalmente es <strong>oportunidad perdida</strong> para la comunidad.</p>
+        <small class="fade-up" style="opacity:.65">Cifras 2024–2025 aprox. (turismo internacional, estructura MiPymes e inclusión financiera).</small>
+      </div>
+      <div><div class="mock" style="background:linear-gradient(160deg, rgba(255,209,102,.18), rgba(34,198,183,.15))"></div></div>
+    </div>
+  </section>
+
+  <section id="insight" class="slide" style="background:linear-gradient(180deg, rgba(17,17,17,.02), rgba(34,198,183,.10))">
+    <div class="container single">
+      <div class="card fade-up" style="padding:28px 28px">
+        <h2 class="kicker">Insight</h2>
+        <h3 class="title">El problema no es la falta de tecnología… es la falta de conexión</h3>
+        <div class="flow">
+          <p class="lead">Open Payments + Interledger permiten que las billeteras y cuentas se <strong>hablen entre sí</strong>, en cualquier moneda, con liquidación instantánea.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="solucion" class="slide">
+    <div class="container">
+      <div>
+        <h2 class="kicker fade-up">Solución</h2>
+        <h3 class="title fade-up">Lana · PayLocal — Paga o recibe, sin fronteras</h3>
+        <ul class="fade-up">
+          <li><strong>Pagos multidivisa</strong>: el turista paga en USD/EUR, el comerciante recibe en moneda local.</li>
+          <li><strong>QR universal</strong>: sin terminal bancaria; un código, listo.</li>
+          <li><strong>Mini-wallet</strong> o wallets existentes; historial y recibos.</li>
+          <li><strong>Open Payments + ILP</strong> para cotizar, enviar y liquidar.</li>
+        </ul>
+        <div class="fade-up" style="margin-top:12px; display:flex; gap:10px">
+          <a class="btn primary" href="#modos">Ver app</a>
+          <a class="btn warn" href="#impacto">Ver impacto</a>
+        </div>
+      </div>
+      <div>
+        <div class="mock"><div class="status">$5.00 USD → $85.00 MXN</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="modos" class="slide" style="background:linear-gradient(180deg, rgba(255,127,163,.10), rgba(255,209,102,.10))">
+    <div class="container">
+      <div>
+        <h2 class="kicker fade-up">Experiencia</h2>
+        <h3 class="title fade-up">Una sola app, dos modos</h3>
+        <div class="grid-2">
+          <div class="card fade-up">
+            <h4>Quiero pagar (Turista)</h4>
+            <ol>
+              <li>Escanea el QR del comerciante</li>
+              <li>Se cotiza tasa y comisión (OP /quote)</li>
+              <li>Confirmas pago (OP /outgoing)</li>
+              <li>Liquidación instantánea por ILP</li>
+            </ol>
+          </div>
+          <div class="card fade-up">
+            <h4>Quiero recibir (Comerciante)</h4>
+            <ol>
+              <li>Genera QR (OP /accounts)</li>
+              <li>Recibe pagos (OP /incoming)</li>
+              <li>Notificación en tiempo real</li>
+              <li>Historial y exportación simple</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="mock" id="demo"><div class="status">Pago completado ✅</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="impacto" class="slide">
+    <div class="container">
+      <div>
+        <h2 class="kicker fade-up">Impacto</h2>
+        <h3 class="title fade-up">Redistribución de la derrama turística hacia comercios locales</h3>
+        <div class="grid-3">
+          <div class="card fade-up"><h4>Económico</h4><p>El turismo internacional en MX genera ~<strong>US$ 33 mil millones</strong> en divisas/año. Canalizar una fracción hacia MiPymes locales impulsa ingresos y empleo.</p></div>
+          <div class="card fade-up"><h4>Social</h4><p>Pagos digitales interoperables habilitan inclusión financiera para comercios hoy fuera del sistema.</p></div>
+          <div class="card fade-up"><h4>Tecnológico</h4><p>Open Payments + ILP permiten pagos <strong>multidivisa</strong> y <strong>al instante</strong> sin terminal bancaria.</p></div>
+        </div>
+        <div class="card fade-up" style="margin-top:16px">
+          <h4 style="margin:0 0 8px">Escenarios de derrama captada por comercios locales</h4>
+          <p class="lead" style="margin:0 0 10px">Base: ~US$ 33,000,000,000 en divisas por turismo internacional.</p>
+          <div class="grid-3" style="align-items:end">
+            <div>
+              <div style="height:140px; display:flex; align-items:flex-end"><div style="width:100%; height:40%; background:var(--lana-turquesa); border-radius:10px"></div></div>
+              <p style="margin:.4em 0 0"><strong>2%</strong> → <strong>US$ 660 M</strong></p>
+              <small>Escenario moderado</small>
+            </div>
+            <div>
+              <div style="height:140px; display:flex; align-items:flex-end"><div style="width:100%; height:70%; background:var(--lana-dorado); border-radius:10px"></div></div>
+              <p style="margin:.4em 0 0"><strong>5%</strong> → <strong>US$ 1.65 B</strong></p>
+              <small>Escenario realista</small>
+            </div>
+            <div>
+              <div style="height:140px; display:flex; align-items:flex-end"><div style="width:100%; height:100%; background:var(--lana-coral); border-radius:10px"></div></div>
+              <p style="margin:.4em 0 0"><strong>10%</strong> → <strong>US$ 3.3 B</strong></p>
+              <small>Escenario ambicioso</small>
+            </div>
+          </div>
+          <small style="display:block; margin-top:8px; opacity:.65">Cálculos redondeados para fines de pitch (USD). B: miles de millones; M: millones.</small>
+        </div>
+      </div>
+      <div><div class="mock" style="display:grid; place-items:center; color:#083; font-weight:700">Map/Nodos</div></div>
+    </div>
+  </section>
+
+  <section id="datosmx" class="slide" style="background:linear-gradient(180deg, rgba(17,17,17,.02), rgba(255,209,102,.10))">
+    <div class="container">
+      <div>
+        <h2 class="kicker fade-up">Contexto México</h2>
+        <h3 class="title fade-up">Dimensión de la oportunidad</h3>
+        <div class="grid-3">
+          <div class="card fade-up"><span class="badge">Derrama turística</span><p><strong>US$ 33B</strong> en 2024 (aprox.). México es <strong>#6</strong> país más visitado.</p></div>
+          <div class="card fade-up"><span class="badge">Estructura productiva</span><p>Las MiPymes son el <strong>99.8%</strong> de las empresas y generan > <strong>50%</strong> del PIB.</p></div>
+          <div class="card fade-up"><span class="badge">Inclusión</span><p>~<strong>51%</strong> de adultos sin cuenta bancaria; baja adopción de crédito en MiPymes.</p></div>
+        </div>
+        <p class="lead fade-up" style="margin-top:12px">Capturar solo <strong>2–10%</strong> de la derrama hacia comercios hoy fuera del sistema puede significar cientos o miles de millones de USD para economías locales.</p>
+        <small class="fade-up" style="opacity:.65">Notas: Cifras 2024–2025 aprox. para fines de pitch.</small>
+      </div>
+      <div><div class="mock" style="display:grid; place-items:center; font-weight:700">MX Data</div></div>
+    </div>
+  </section>
+
+  <section id="stack" class="slide">
+    <div class="container">
+      <div>
+        <h2 class="kicker fade-up">Stack tecnológico</h2>
+        <h3 class="title fade-up">De la demo al mundo real</h3>
+        <div class="grid-2">
+          <div class="card fade-up">
+            <h4>Frontend</h4>
+            <ul>
+              <li>HTML/CSS/JS responsivo con microinteracciones</li>
+              <li>QR Scanner (placeholder demo)</li>
+              <li>Soporte ES/EN</li>
+            </ul>
+            <h4>Backend (MVP)</h4>
+            <ul>
+              <li>Node.js + Express (simulación endpoints)</li>
+              <li>Open Payments API: /accounts, /incoming, /quote, /outgoing</li>
+            </ul>
+          </div>
+          <div class="card fade-up">
+            <h4>Interoperabilidad</h4>
+            <ul>
+              <li>Interledger Protocol (ILP) para liquidación</li>
+              <li>Compatibilidad con wallets/regionales</li>
+              <li>Escalable a reputación, cashback, microcrédito</li>
+            </ul>
+            <div class="mock" style="margin-top:8px; display:grid; place-items:center">Diagrama</div>
+          </div>
+        </div>
+      </div>
+      <div><div class="mock" style="display:grid; place-items:center; font-weight:700">Arquitectura</div></div>
+    </div>
+  </section>
+
+  <section id="roadmap" class="slide" style="background:linear-gradient(180deg, rgba(17,17,17,.02), rgba(34,198,183,.10))">
+    <div class="container single">
+      <div class="card fade-up" style="padding:28px 28px">
+        <h2 class="kicker">Escalabilidad</h2>
+        <h3 class="title">Lo que sigue…</h3>
+        <ul class="lead">
+          <li>Reputación y verificación de comerciantes</li>
+          <li>Cashback turístico e incentivos locales</li>
+          <li>Integración con microcréditos y Ahorro</li>
+          <li>Panel de datos para gobiernos locales</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="cierre" class="slide" style="background:radial-gradient(80% 120% at 20% 10%, rgba(34,198,183,.18), transparent), radial-gradient(90% 120% at 80% 10%, rgba(255,127,163,.16), transparent)">
+    <div class="container single">
+      <div class="card fade-up" style="text-align:center; padding:36px 28px">
+        <h3 class="title">Lana conecta personas, no solo pagos</h3>
+        <p class="lead">Con Interledger, el dinero deja de tener fronteras.</p>
+        <div style="display:flex; gap:10px; justify-content:center; margin-top:8px">
+          <a class="btn primary" href="#solucion">Volver a la solución</a>
+          <a class="btn pink" href="#hook">Inicio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const io = new IntersectionObserver((entries)=>{entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });},{ threshold:.16 });
+    document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
+    const coinsLayer = document.querySelector('.coins');
+    const COINS = 26;
+    for(let i=0;i<COINS;i++){ const c=document.createElement('div'); c.className='coin'; c.style.left=Math.random()*100+'vw'; c.style.top=Math.random()*100+'vh'; coinsLayer.appendChild(c); }
+    window.addEventListener('scroll', ()=>{ const y=window.scrollY; document.querySelectorAll('.coin').forEach((c,idx)=>{ const speed=0.2+(idx%5)*0.06; c.style.transform=`translateY(${(y*speed)%120}px) rotate(${(y*0.1)%360}deg)`; const rect=c.getBoundingClientRect(); const vis=1-Math.abs(rect.top-window.innerHeight/2)/(window.innerHeight/2); c.style.opacity=Math.max(.08, Math.min(1, vis)); }); }, {passive:true});
+    const esBtn=document.getElementById('es'); const enBtn=document.getElementById('en');
+    enBtn.addEventListener('click', ()=>{ alert('Versión EN: placeholder para duplicar secciones en inglés.'); esBtn.classList.remove('active'); enBtn.classList.add('active'); });
+    esBtn.addEventListener('click', ()=>{ enBtn.classList.remove('active'); esBtn.classList.add('active'); });
+  </script>
+</body>
+</html>

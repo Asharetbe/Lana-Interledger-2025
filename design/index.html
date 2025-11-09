@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LANA — Cobra y paga sin enredos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="brand">
+      <img src="assets/logo-lana-pay.png" alt="LANA" width="15%"/>
+      <!--<div class="brand-name">Rápido y Seguro</div>-->
+    </div>
+    <div class="nav-actions">
+      <a class="btn ghost" href="#" data-i18n="btn.login">Iniciar sesión</a>
+      <a class="btn secondary" href="#signup" data-i18n="btn.signup">Crear cuenta</a>
+      <a class="btn lang" href="#" aria-label="Cambiar idioma" data-i18n="btn.lang">ES</a>
+    </div>
+  </nav>
+
+  <header class="container hero">
+    <div class="copy">
+      <!--<span class="kicker" data-i18n="hero.kicker">Bienvenida</span>-->
+      <h1 data-i18n="hero.h1">Cobra y paga sin enredos</h1>
+      <p class="lead" data-i18n="hero.lead">Con lana puedes recibir pagos en segundos y enviar dinero a quien necesites en cualquier divisa.</p>
+
+      <div class="hero-cards">
+        <div class="hero-card">
+          <div class="hc-title"><span class="emoji">💰</span><span data-i18n="hero.card1.t">Económico</span></div>
+          <p data-i18n="hero.card1.p">Democratiza el acceso y mejora la distribución del ingreso.</p>
+        </div>
+        <div class="hero-card">
+          <div class="hc-title"><span class="emoji">🤝</span><span data-i18n="hero.card2.t">Social</span></div>
+          <p data-i18n="hero.card2.p">Inclusión financiera real para quienes no usan banca tradicional.</p>
+        </div>
+        <div class="hero-card">
+          <div class="hc-title"><span class="emoji">⚙️</span><span data-i18n="hero.card3.t">Tecnológico</span></div>
+          <p data-i18n="hero.card3.p">Interoperabilidad real con Open Payments + ILP.</p>
+        </div>
+      </div>
+      
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin: 10px 0 15px 0;">
+        <!--<a class="btn pink" href="#signup" data-i18n="btn.signup">Crear cuenta</a>-->
+        <a class="btn pink" href="#" data-i18n="hero.cta.download">Descarga la app</a>
+      </div>
+     <!--
+      <div class="tip" style="margin-top:12px; max-width:560px">
+        <strong style="font-size:.88rem">Tip:</strong> Genera un <b>QR</b> o comparte un <b>link</b>. Quien paga puede usar distintas apps; tú recibes en tu moneda.
+      </div>
+    -->
+    </div>
+    <div class="media">
+      <img src="assets/ilustracion-entrega-dinero.png" alt="Cobro digital entre teléfonos">
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container spaced" id="que-es">
+      <span class="kicker" data-i18n="quees.kicker">¿Qué es LANA?</span>
+      <h2 data-i18n="quees.h2">Tu cobro digital sin estrés</h2>
+      <p style="max-width:820px" data-i18n="quees.p">Plataforma de pagos pensada para comerciantes pequeños, prestadores de servicio (propinas, taxis) y microempresas. Cobra con QR, links o pago directo, y controla tus ventas desde tu celular.</p>
+      <div class="grid cols-3" style="margin-top:12px">
+        <div class="card"><div class="icon">💳</div><strong data-i18n="cf.card2.t">Cobra como tú quieras</strong><p data-i18n="cf.card2.p">Links, QR y pagos directos desde tu teléfono.</p></div>
+        <div class="card"><div class="icon">👤</div><strong>Para todo tipo de negocio</strong><p>Tiendas, fondas, bazares, meseros, taxistas y más.</p></div>
+        <div class="card"><div class="icon">🧾</div><strong data-i18n="faq.q3">Transparente</strong><p data-i18n="ben.c4.p">Comisión clara por transacción. Sin sorpresas.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" id="como-funciona">
+      <span class="kicker" data-i18n="cf.kicker" style="max-width:500px">Cómo funciona</span>
+      <h2 data-i18n="cf.h2">En 3 pasos, sin vueltas</h2>
+      <div class="twocol">
+        <div class="left">
+          <div class="grid">
+            <div class="card"><div class="icon">1</div><strong data-i18n="cf.card1.t">Regístrate</strong><p data-i18n="cf.card1.p">Valida tu negocio en minutos.</p></div>
+            <div class="card"><div class="icon">2</div><strong data-i18n="cf.card2.t">Comparte</strong><p data-i18n="cf.card2.p">Envía tu link o muestra el QR para cobrar.</p></div>
+            <div class="card"><div class="icon">3</div><strong data-i18n="cf.card3.t">Recibe tu lana</strong><p data-i18n="cf.card3.p">Confirmación inmediata y control total.</p></div>
+          </div>
+        </div>
+        <div class="right">
+          <img src="assets/ilustracion-manos-phones.png" alt="Envía y recibe pagos desde el celular">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" id="beneficios">
+      <span class="kicker" data-i18n="ben.kicker">Beneficios</span>
+      <h2 data-i18n="ben.h2">Hecha para el día a día del comercio</h2>
+      <div class="twocol">
+        <div class="left">
+          <img src="assets/ilustracion-monedas-2.png" alt="Monedas digitales entre celulares">
+        </div>
+        <div class="right">
+          <div class="grid cols-2">
+            <div class="card"><div class="icon">💸</div><strong data-i18n="ben.c1.t">Rápido</strong><p data-i18n="ben.c1.p">Genera y comparte tu cobro al instante.</p></div>
+            <div class="card"><div class="icon">🔒</div><strong data-i18n="ben.c2.t">Seguro</strong><p data-i18n="ben.c2.p">Protección de datos y transacciones con cifrado.</p></div>
+            <div class="card"><div class="icon">⚡</div><strong data-i18n="ben.c3.t">Sin esperas</strong><p data-i18n="ben.c3.p">Notificaciones y liquidaciones ágiles.</p></div>
+            <div class="card"><div class="icon">📱</div><strong data-i18n="ben.c4.t">Panel claro</strong><p data-i18n="ben.c4.p">Ventas, reportes y retiros en un solo lugar.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" id="faq">
+      <span class="kicker" data-i18n="faq.kicker">Preguntas frecuentes</span>
+      <h2 data-i18n="faq.h2">Resolvemos tus dudas</h2>
+      <div class="faq-wrap">
+        <div class="faq-vis">
+          <img src="assets/foto-placeholder.svg" alt="Comercio utilizando LANA">
+        </div>
+        <div class="faq">
+          <details><summary data-i18n="faq.q1">¿Necesito estar dado de alta en el SAT?</summary><p data-i18n="faq.a1">Puedes empezar a cobrar. Para montos altos o facturar, te guiamos paso a paso.</p></details>
+          <details><summary data-i18n="faq.q2">¿En cuánto tiempo recibo mi dinero?</summary><p data-i18n="faq.a2">Confirmaciones inmediatas; la liquidación depende del método elegido.</p></details>
+          <details><summary data-i18n="faq.q3">¿Qué comisiones manejan?</summary><p data-i18n="faq.a3">Comisión plana por transacción. Verás el costo antes de confirmar.</p></details>
+          <details><summary data-i18n="faq.q4">¿Qué necesito para abrir mi cuenta?</summary><p data-i18n="faq.a4">Identificación vigente y número de celular. Toma unos minutos.</p></details>
+          <details><summary data-i18n="faq.q5">¿Puedo recibir propinas?</summary><p data-i18n="faq.a5">Sí, modo propinas para meseros, repartidores o servicios.</p></details>
+          <details><summary data-i18n="faq.q6">¿Hay soporte si tengo un problema?</summary><p data-i18n="faq.a6">Sí, chat y WhatsApp en horario extendido.</p></details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="row container" style="padding:0">
+      <div data-i18n="footer.copy">© lana 2025 · Pagos simples y seguros</div>
+      <div style="display:flex; gap:10px">
+        <a href="#">Términos</a>
+        <a href="#">Privacidad</a>
+        <a href="#faq">Ayuda</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="i18n.js"></script>
+</body>
+</html>
